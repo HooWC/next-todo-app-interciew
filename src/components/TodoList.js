@@ -7,20 +7,20 @@ export default function TodoList(props) {
     // hooks function
     const { todos, editTodo, deleteTodo, toggleComplete } = props;
 
-    // Logic: if there is no data in localStorage at the begin, then return
-    if (!todos || todos.length === 0 || (!Array.isArray(todos))) {
-        return (
-            <div className="text-center">
-                <p>No tasks to display</p>
-            </div>
-        )
-    }
-
     // Set default first page 1
     const [currentPage, setCurrentPage] = useState(1);
 
     // Show how many task item number
     const itemsDisplay = 6;
+
+    // Logic: if there is no data in localStorage at the begin, then return
+    if (!todos || todos.length === 0 || !Array.isArray(todos)) {
+        return (
+            <div className="text-center">
+                <p>No tasks to display</p>
+            </div>
+        );
+    }
 
     // Use Math.ceil to get total pages
     const totalPages = Math.ceil(todos.length / itemsDisplay);
@@ -67,8 +67,7 @@ export default function TodoList(props) {
                 )}
             </Droppable>
 
-            {/* paging control */}
-            {/* 分页控件 */}
+            {/* Paging control */}
             <nav className="mt-4">
                 <ul className="pagination justify-content-center">
                     <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
@@ -103,5 +102,5 @@ export default function TodoList(props) {
                 </ul>
             </nav>
         </div>
-    )
+    );
 }
