@@ -26,21 +26,9 @@ export default function Filters(props) {
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
                 >
-                    <option value="all">All</option>
+                    <option value="all">All Type</option>
                     <option value="completed">Completed</option>
                     <option value="incomplete">Incomplete</option>
-                </select>
-            </div>
-
-            {/* Sort Date */}
-            <div className="col-md-3 col-6 mb-2">
-                <select
-                    className="form-select"
-                    value={sort}
-                    onChange={(e) => setSort(e.target.value)}
-                >
-                    <option value="startDate-asc">Sort by Start Date (Asc)</option>
-                    <option value="startDate-desc">Sort by Start Date (Desc)</option>
                 </select>
             </div>
 
@@ -60,6 +48,18 @@ export default function Filters(props) {
                     <option value="Testing">Testing</option>
                     <option value="Documentation Writing">Documentation Writing</option>
                     <option value="API Development">API Development</option>
+                </select>
+            </div>
+
+            {/* Sort Date */}
+            <div className="col-md-3 col-12 mb-2">
+                <select
+                    className="form-select"
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                >
+                    <option value="startDate-asc">Sort by Start Date (Asc)</option>
+                    <option value="startDate-desc">Sort by Start Date (Desc)</option>
                 </select>
             </div>
 
