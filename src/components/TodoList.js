@@ -32,6 +32,13 @@ export default function TodoList(props) {
         return todos.slice(start, end)
     }
 
+    // page function
+    const handlePageChange = (pageNumber) => {
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            setCurrentPage(pageNumber);
+        }
+    };
+
     return (
         <div>
             <Droppable droppableId="todos">
@@ -61,6 +68,7 @@ export default function TodoList(props) {
             </Droppable>
 
             {/* paging control */}
+            {/* 分页控件 */}
             <nav className="mt-4">
                 <ul className="pagination justify-content-center">
                     <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
@@ -68,7 +76,7 @@ export default function TodoList(props) {
                             className="page-link"
                             onClick={() => handlePageChange(currentPage - 1)}
                         >
-                            Previous
+                            Prev
                         </button>
                     </li>
                     {Array.from({ length: totalPages }, (_, index) => (
@@ -94,7 +102,6 @@ export default function TodoList(props) {
                     </li>
                 </ul>
             </nav>
-
         </div>
     )
 }

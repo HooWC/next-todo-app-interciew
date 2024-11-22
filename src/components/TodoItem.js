@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import EditTodo from "./EditTodo";
-import Style from "../styles/TodoItem.module.css";
 import { isValid } from 'date-fns';
 
 export default function TodoItem(props) {
@@ -48,7 +47,9 @@ export default function TodoItem(props) {
                 <div className="form-check">
 
                     {/* Checkbox */}
-                    <input type="checkbox" checked={todo.completed} onChange={handleCheck} className="form-check-input me-2" />
+                    <input type="checkbox" checked={todo.completed} onChange={handleCheck} className="form-check-input me-2 shadow-lg rounded-3" style={{
+                        border: '3px solid black'
+                    }} />
 
                     <label className="form-check-label fw-bold" style={{ fontSize: '0.9rem' }}>
 
@@ -57,7 +58,7 @@ export default function TodoItem(props) {
                         <br />
 
                         {/* Display Task Name Data */}
-                        <div className={Style.taskName}>
+                        <div className="taskName">
                             {todo.task}
                         </div>
                         <br />

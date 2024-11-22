@@ -91,8 +91,8 @@ export default function TaskCalendar(props) {
     }
 
     return (
-        <div className="container mt-4">
-            <h2 className="text-center b-4 fw-bold" style={{ color: '#343a40' }}>Task Calendar</h2>
+        <div className="container mt-5 mb-4">
+            <h2 className="text-center b-4 fw-bold mb-4" style={{ color: '#343a40' }}>Task Calendar</h2>
 
             <div className="row d-flex align-items-stretch">
 
@@ -135,8 +135,8 @@ export default function TaskCalendar(props) {
 
                                                 {/* Display Task Info */}
                                                 <div>
-                                                    <strong>{task.task} </strong>
-                                                    <span className="text-muted">[{task.category}]</span>
+                                                    <span className="text-muted">[{task.category}]</span>{" "}
+                                                    <small className="fw-bold">{task.task}</small>
                                                 </div>
 
                                                 {/* Display Date */}

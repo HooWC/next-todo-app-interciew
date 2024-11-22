@@ -5,7 +5,7 @@ export default function AddTodo(props) {
     const { addTodo } = props;
 
     const [task, setTask] = useState("");
-    const [category, setcategory] = useState("");
+    const [category, setCategory] = useState("");
     const [startDate, setStartDate] = useState(null);
     const [dueDate, setDueDate] = useState(null);
 

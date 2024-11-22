@@ -65,7 +65,7 @@ export default function EditTodo(props) {
                             <div className="modal-body">
 
                                 {/* Task Name */}
-                                <div className="mb-2">
+                                <div className="mb-4">
 
                                     <label>Task Name</label>
 
@@ -74,7 +74,7 @@ export default function EditTodo(props) {
                                 </div>
 
                                 {/* Category */}
-                                <div className="mb-2">
+                                <div className="mb-4">
 
                                     <label>Category</label>
 
@@ -97,7 +97,7 @@ export default function EditTodo(props) {
                                 </div>
 
                                 {/* Start Date */}
-                                <div className="mb-2">
+                                <div className="mb-4">
 
                                     <label>Start Date</label>
 
@@ -106,7 +106,7 @@ export default function EditTodo(props) {
                                 </div>
 
                                 {/* Due Date */}
-                                <div className="mb-2">
+                                <div className="mb-4">
 
                                     <label>Due Date</label>
 
