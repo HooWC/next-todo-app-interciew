@@ -24,7 +24,7 @@ export default function EditTodo(props) {
 
         setTitle(todo.task);
         setCategory(todo.category);
-    }, [task])
+    }, [todo])
 
     // Update
     const handleSubmit = (e) => {
