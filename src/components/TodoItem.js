@@ -54,7 +54,7 @@ export default function TodoItem(props) {
                     <label className="form-check-label fw-bold" style={{ fontSize: '0.9rem' }}>
 
                         {/* Display Category Data */}
-                        <small>[{todo.category}]</small>
+                        <small className={`fw-bold ${todo.completed ? 'text-warning' : 'text-primary'}`}>[{todo.category}]</small>
                         <br />
 
                         {/* Display Task Name Data */}
@@ -64,7 +64,7 @@ export default function TodoItem(props) {
                         <br />
 
                         {/* Display Start + Due Date Data */}
-                        <small className="text-muted">
+                        <small>
                             {isValidDate(startDate) ? startDate.toLocaleDateString() : "Invalid Date"} - {isValidDate(dueDate) ? dueDate.toLocaleDateString() : "Invalid Date"}
                         </small>
 

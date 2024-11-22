@@ -95,7 +95,7 @@ export default function AddTodo(props) {
             </div>
 
             {/* Submit Button */}
-            <button type="submit" className="btn btn-primary w-100">Add New Task</button>
+            <button type="submit" className="btn btn-primary w-100 fw-bold">Add New Task</button>
 
         </form>
     )

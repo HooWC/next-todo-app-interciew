@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
+import { parse } from "json2csv";
+import * as XLSX from "xlsx";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function useTodos() {
     const [todos, setTodos] = useState([]);
     const [filter, setFilter] = useState("all");
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState("date-asc");
+    const [categoryFilter, setCategoryFilter] = useState("all");  // New state for category filter
 
     // Load tasks from localStorage
     useEffect(() => {
@@ -30,7 +34,7 @@ export default function useTodos() {
 
     // Add todo
     const addTodo = (newTodo) => {
-        setTodos([...todos, { ...newTodo, id: Date.now(), completed: false }]);
+        setTodos([...todos, { ...newTodo, id: uuidv4(), completed: false }]);
     };
 
     // Edit todo
@@ -64,18 +68,23 @@ export default function useTodos() {
             if (filter === "incomplete") return !todo.completed;
             return true;
         })
+        // Category Filter Logic
+        .filter((todo) => {
+            if (categoryFilter === "all") return true;
+            return todo.category === categoryFilter;
+        })
         // Search Logic
         .filter((todo) => {
             return todo.task && typeof todo.task === "string" && todo.task.toLowerCase().includes(search.toLowerCase());
         })
-        // Date Login
+        // Date Sorting
         .sort((a, b) => {
             if (sort === "startDate-asc") return a.startDate - b.startDate;
             if (sort === "startDate-desc") return b.startDate - a.startDate;
             return 0;
         });
 
-    // If localStorage no data, give a empty []
+    // If localStorage has no data, provide an empty array
     const safeFilteredTodos = filteredTodos.length > 0 ? filteredTodos : [];
 
     // Drag and Drop
@@ -88,6 +97,40 @@ export default function useTodos() {
         reorderedTodos.splice(destination.index, 0, removed);
 
         setTodos(reorderedTodos);
+    };
+
+    // Export to CSV
+    const exportToCSV = () => {
+        try {
+            const csv = parse(todos.map(todo => ({
+                id: todo.id,
+                task: todo.task,
+                completed: todo.completed,
+                startDate: todo.startDate ? todo.startDate.toLocaleDateString('en-GB') : '',
+                dueDate: todo.dueDate ? todo.dueDate.toLocaleDateString('en-GB') : '',
+            })));
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'todos.csv';
+            link.click();
+        } catch (err) {
+            console.error('Failed to export CSV', err);
+        }
+    };
+
+    // Export to Excel
+    const exportToExcel = () => {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet(todos.map(todo => ({
+            id: todo.id,
+            task: todo.task,
+            completed: todo.completed,
+            startDate: todo.startDate ? todo.startDate.toLocaleDateString('en-GB') : '',
+            dueDate: todo.dueDate ? todo.dueDate.toLocaleDateString('en-GB') : '',
+        })));
+        XLSX.utils.book_append_sheet(wb, ws, 'Todos');
+        XLSX.writeFile(wb, 'todos.xlsx');
     };
 
     return {
@@ -103,5 +146,9 @@ export default function useTodos() {
         deleteTodo,
         toggleComplete,
         handleDragEnd,
+        exportToCSV,
+        exportToExcel,
+        categoryFilter,
+        setCategoryFilter
     };
 }

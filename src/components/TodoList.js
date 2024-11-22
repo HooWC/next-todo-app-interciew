@@ -72,7 +72,7 @@ export default function TodoList(props) {
                 <ul className="pagination justify-content-center">
                     <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
                         <button
-                            className="page-link"
+                            className="page-link fw-bold"
                             onClick={() => handlePageChange(currentPage - 1)}
                         >
                             Prev
@@ -93,7 +93,7 @@ export default function TodoList(props) {
                     ))}
                     <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
                         <button
-                            className="page-link"
+                            className="page-link fw-bold"
                             onClick={() => handlePageChange(currentPage + 1)}
                         >
                             Next

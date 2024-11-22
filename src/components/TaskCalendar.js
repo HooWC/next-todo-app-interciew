@@ -91,13 +91,26 @@ export default function TaskCalendar(props) {
     }
 
     return (
-        <div className="container mt-5 mb-4">
-            <h2 className="text-center b-4 fw-bold mb-4" style={{ color: '#343a40' }}>Task Calendar</h2>
+        <div className="container mt-5 mb-3">
+
+            <h1 className="text-center b-4 fw-bold mb-4"
+                style={{
+                    background: "linear-gradient(to right, red, #2980b9)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                    fontFamily: "'Roboto', sans-serif",
+                    letterSpacing: "1px",
+                    textTransform: "uppercase",
+                    textShadow: "3px 3px 6px rgba(0, 0, 0, 0.3)",
+                    paddingBottom: "20px",
+                    borderBottom: "5px solid #632339"
+                }}>Task Calendar</h1>
 
             <div className="row d-flex align-items-stretch">
 
                 {/* Calendar Box */}
-                <div className="col-md-6">
+                <div className="col-md-6 mb-2">
                     <div className="card shadow border-0 h-100">
                         <div className="card-body d-flex justify-content-center align-items-center">
 
@@ -114,7 +127,7 @@ export default function TaskCalendar(props) {
                 </div>
 
                 {/* Infomation Box */}
-                <div className="col-md-6">
+                <div className="col-md-6 mb-2">
                     <div className="card shadow border-0 h-100">
                         <div className="card-body" style={{ maxHeight: "400px", overflowY: 'auto' }}>
 
@@ -135,7 +148,7 @@ export default function TaskCalendar(props) {
 
                                                 {/* Display Task Info */}
                                                 <div>
-                                                    <span className="text-muted">[{task.category}]</span>{" "}
+                                                    <span className="text-primary fw-bold">[{task.category}]</span>{" "}
                                                     <small className="fw-bold">{task.task}</small>
                                                 </div>
 
