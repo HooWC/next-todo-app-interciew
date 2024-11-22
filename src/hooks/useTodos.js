@@ -101,6 +101,11 @@ export default function useTodos() {
 
     // Export to CSV
     const exportToCSV = () => {
+        if (todos.length === 0) {
+            alert('No data available to export');
+            return;
+        }
+
         try {
             const csv = parse(todos.map(todo => ({
                 id: todo.id,
@@ -121,6 +126,11 @@ export default function useTodos() {
 
     // Export to Excel
     const exportToExcel = () => {
+        if (todos.length === 0) {
+            alert('No data available to export');
+            return;
+        }
+
         const wb = XLSX.utils.book_new();
         const ws = XLSX.utils.json_to_sheet(todos.map(todo => ({
             id: todo.id,
