@@ -75,6 +75,12 @@ export default function AddTodo(props) {
                         <option value="Testing">Testing</option>
                         <option value="Documentation Writing">Documentation Writing</option>
                         <option value="API Development">API Development</option>
+                        <option value="Project Planning">Project Planning</option>
+                        <option value="System Maintenance">System Maintenance</option>
+                        <option value="Recruitment">Recruitment</option>
+                        <option value="Event Planning">Event Planning</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Business Strategy">Business Strategy</option>
                     </select>
                 </div>
 
